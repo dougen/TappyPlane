@@ -23,8 +23,9 @@ public class PlaneController : MonoBehaviour
 	{
 		startPos = transform.position;
 
-		// set mass center
-		rigd2d = GetComponent<Rigidbody2D>();		
+		// Avoid plane fall down when the game stared.
+		rigd2d = GetComponent<Rigidbody2D>();
+		rigd2d.gravityScale = 0f;	
 	}
 	
 	// Update is called once per frame
@@ -35,10 +36,11 @@ public class PlaneController : MonoBehaviour
 			IdleMove();
 		}
 
-		// todo: when game start, the plane will fall quikly, is't bugs.
+		// when gameStart is true, recover the gravity.
 		if (!gameStart && Input.GetMouseButtonDown(0))
 		{
 			gameStart = true;
+			rigd2d.gravityScale = 100f;
 		}
 	}
 
