@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GroundMovement : MonoBehaviour 
+public class BgMovement : MonoBehaviour 
 {
 
 	public Vector2 startPos;
@@ -18,5 +18,4 @@ public class GroundMovement : MonoBehaviour
 
 		transform.Translate(-moveSpeed * Time.deltaTime, 0f, 0f);
 	}
-
 }

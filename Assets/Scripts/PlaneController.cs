@@ -12,7 +12,8 @@ public class PlaneController : MonoBehaviour
 	public Vector2 upSpeed;
 
 	// Set start flag false default.
-	private bool gameStart = false;
+	[HideInInspector]
+	public bool gameStarted = false;
 
 	private float radian = 0f;
 	private Rigidbody2D rigd2d;
@@ -31,22 +32,22 @@ public class PlaneController : MonoBehaviour
 	// Update is called once per frame
 	private void Update () 
 	{
-		if (!gameStart) 
+		if (!gameStarted) 
 		{
 			IdleMove();
 		}
 
 		// when gameStart is true, recover the gravity.
-		if (!gameStart && Input.GetMouseButtonDown(0))
+		if (!gameStarted && Input.GetMouseButtonDown(0))
 		{
-			gameStart = true;
+			gameStarted = true;
 			rigd2d.gravityScale = 100f;
 		}
 	}
 
 	private void FixedUpdate() 
 	{
-		if (gameStart && Input.GetMouseButtonDown(0)) {
+		if (gameStarted && Input.GetMouseButtonDown(0)) {
 			rigd2d.velocity = upSpeed;
 		}
 	}
