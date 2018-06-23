@@ -232,7 +232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gap: 400
   moveSpeed: 150
-  startPos: {x: 500, y: 0}
+  startPos: {x: 575, y: 0}
   endPos: {x: -475, y: 0}
   heightPos: {x: -87, y: 118}
   rock: {fileID: 4875071675013184}

@@ -9,6 +9,13 @@ public class BgMovement : MonoBehaviour
 	public Vector2 endPos;
 	public float moveSpeed = 100f;
 
+	private GameManager gm;
+
+	private void Start() 
+	{
+		gm = FindObjectOfType<GameManager>();
+	}
+
 	private void Update() 
 	{
 		if (transform.position.x < endPos.x)
@@ -16,6 +23,9 @@ public class BgMovement : MonoBehaviour
 			transform.position = startPos;
 		}
 
-		transform.Translate(-moveSpeed * Time.deltaTime, 0f, 0f);
+		if (!gm.gameOver)
+		{
+			transform.Translate(-moveSpeed * Time.deltaTime, 0f, 0f);
+		}
 	}
 }

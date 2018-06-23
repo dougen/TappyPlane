@@ -17,6 +17,10 @@ public class RocksScripts : MonoBehaviour
 	public Transform rock;
 	public Transform rockDown;
 
+	private GameManager gm;
+	private GameObject plane;
+	private bool passed;
+
 	
 
 	// Use this for initialization
@@ -25,6 +29,10 @@ public class RocksScripts : MonoBehaviour
 		rock.transform.position = new Vector2(transform.position.x, transform.position.y - gap / 2);
 		rockDown.transform.position = new Vector2(transform.position.x, transform.position.y + gap / 2);
 		transform.position = new Vector2(transform.position.x, Random.Range(heightPos.x, heightPos.y));
+
+		gm = FindObjectOfType<GameManager>();
+		plane = GameObject.Find("Plane");
+		passed = false;
 	}
 	
 	// Update is called once per frame
@@ -34,7 +42,19 @@ public class RocksScripts : MonoBehaviour
 		{
 			startPos.y = Random.Range(heightPos.x, heightPos.y);
 			transform.position = startPos;
+			passed = false;
 		}
-		transform.Translate(-moveSpeed * Time.deltaTime, 0f, 0f);
+
+		if (!gm.gameOver)
+		{
+			transform.Translate(-moveSpeed * Time.deltaTime, 0f, 0f);
+
+			if (transform.position.x < plane.transform.position.x && !passed) 
+			{
+				gm.scores++;
+				passed = true;
+				Debug.Log(gm.scores);
+			}
+		}
 	}
 }

@@ -11,7 +11,10 @@ public class GameManager : MonoBehaviour
 	public float swapStep;
 	public int rockNum;
 
-    private int scores = 0;
+    [HideInInspector]
+    public bool gameOver = false;
+    public int scores = 0;
+    
 	private bool swaped = false;
 
     // Use this for initialization
@@ -28,6 +31,13 @@ public class GameManager : MonoBehaviour
 			swaped = true;
             SwapRocks();
         }
+
+        // GameOver. 
+        // TODO: Stop the game and popup the sorce UI.
+        if (gameOver)
+        {
+
+        }
     }
 
     private void SwapRocks()
@@ -40,4 +50,5 @@ public class GameManager : MonoBehaviour
 			rs.endPos.x = swapPos - swapStep * rockNum;
         }
     }
+
 }
