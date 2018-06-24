@@ -50,8 +50,6 @@ public class PlaneController : MonoBehaviour
         }
 
         
-
-
         // Game Over
         if (gm.gameOver)
         {

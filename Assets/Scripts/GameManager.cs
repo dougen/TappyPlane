@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public GameObject rockPrefab;
     public PlaneController pc;
+    public Text scoresText;
 	
 	public float swapPos;
 	public float swapStep;
@@ -30,13 +32,16 @@ public class GameManager : MonoBehaviour
         {
 			swaped = true;
             SwapRocks();
+            scoresText.gameObject.SetActive(true);
         }
+
+        scoresText.text = scores.ToString();
 
         // GameOver. 
         // TODO: Stop the game and popup the sorce UI.
         if (gameOver)
         {
-
+            scoresText.gameObject.SetActive(false);
         }
     }
 

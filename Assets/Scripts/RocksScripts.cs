@@ -53,7 +53,6 @@ public class RocksScripts : MonoBehaviour
 			{
 				gm.scores++;
 				passed = true;
-				Debug.Log(gm.scores);
 			}
 		}
 	}
