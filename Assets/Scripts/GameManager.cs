@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public GameObject rockPrefab;
     public PlaneController pc;
     public Text scoresText;
+    public GameObject gameOverPanel;
 	
 	public float swapPos;
 	public float swapStep;
@@ -42,6 +43,7 @@ public class GameManager : MonoBehaviour
         if (gameOver)
         {
             scoresText.gameObject.SetActive(false);
+            gameOverPanel.SetActive(true);
         }
     }
 
