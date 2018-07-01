@@ -6407,6 +6407,8 @@ MonoBehaviour:
   rockPrefab: {fileID: 1094527055959184, guid: 1cf267ff4fdf6ac438664759ccdf0b24, type: 2}
   pc: {fileID: 295037288}
   scoresText: {fileID: 1018515980}
+  finalScore: {fileID: 641786102}
+  bestScore: {fileID: 1826564477}
   gameOverPanel: {fileID: 1329125707}
   swapPos: 460
   swapStep: 350

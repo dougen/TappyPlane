@@ -1,13 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
+
 
 public class GameManager : MonoBehaviour
 {
     public GameObject rockPrefab;
     public PlaneController pc;
     public Text scoresText;
+    public Text finalScore;
+    public Text bestScore;
     public GameObject gameOverPanel;
 	
 	public float swapPos;
@@ -39,11 +43,14 @@ public class GameManager : MonoBehaviour
         scoresText.text = scores.ToString();
 
         // GameOver. 
-        // TODO: Stop the game and popup the sorce UI.
+        // Todo: Stop the game and popup the sorce UI.
+        // Todo: GameOver panel need same animation when it active;
         if (gameOver)
         {
             scoresText.gameObject.SetActive(false);
             gameOverPanel.SetActive(true);
+            finalScore.text = scores.ToString();
+            bestScore.text = SaveData(scores);
         }
     }
 
@@ -58,4 +65,23 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // Save score if it's best score
+    // And return the best score.
+    private string SaveData(int score)
+    {
+        int best = 0;
+        string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
+        
+        // Todo: load data file, and write data
+
+        if (score > best)
+        {
+
+            return score.ToString();
+        }
+        else
+        {
+            return best.ToString();
+        }
+    }
 }
