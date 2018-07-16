@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector]
     public bool gameOver = false;
+    
     public int scores = 0;
     
 	private bool swaped = false;
