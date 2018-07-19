@@ -16,6 +16,7 @@ public class GroundMovement : MonoBehaviour
 		gm = FindObjectOfType<GameManager>();
 	}
 
+	// TODO: 根据分数区间变换贴图
 	private void Update() 
 	{
 		if (transform.position.x < endPos.x)

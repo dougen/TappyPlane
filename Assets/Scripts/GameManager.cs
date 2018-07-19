@@ -13,18 +13,21 @@ public class GameManager : MonoBehaviour
     public Text scoresText;
     public Text finalScore;
     public Text bestScore;
+    public Text newRecord;
     public GameObject gameOverPanel;
-	
-	public float swapPos;
-	public float swapStep;
-	public int rockNum;
+
+    public float swapPos;
+    public float swapStep;
+    public int rockNum;
+
+    public int[] levels;
 
     [HideInInspector]
     public bool gameOver = false;
-    
+
     public int scores = 0;
-    
-	private bool swaped = false;
+
+    private bool swaped = false;
 
     // Use this for initialization
     void Start()
@@ -37,7 +40,8 @@ public class GameManager : MonoBehaviour
     {
         if (pc.gameStarted && !swaped)
         {
-			swaped = true;
+            // TODO: 播放背景音乐
+            swaped = true;
             SwapRocks();
             scoresText.gameObject.SetActive(true);
         }
@@ -45,13 +49,13 @@ public class GameManager : MonoBehaviour
         scoresText.text = scores.ToString();
 
         // GameOver. 
-        // Todo: Stop the game and popup the sorce UI.
-        // Todo: GameOver panel need same animation when it active;
+        // Stop the game and popup the sorce UI.
         if (gameOver)
         {
             scoresText.gameObject.SetActive(false);
             gameOverPanel.SetActive(true);
             finalScore.text = scores.ToString();
+
             bestScore.text = SaveData(scores);
         }
     }
@@ -61,9 +65,9 @@ public class GameManager : MonoBehaviour
         for (var i = 0; i < rockNum; i++)
         {
             GameObject rock = Instantiate(rockPrefab, new Vector3(swapPos + i * swapStep, 0f, 0f), Quaternion.identity);
-			RocksScripts rs = rock.GetComponent<RocksScripts>();
-			rs.startPos.x = swapPos;
-			rs.endPos.x = swapPos - swapStep * rockNum;
+            RocksScripts rs = rock.GetComponent<RocksScripts>();
+            rs.startPos.x = swapPos;
+            rs.endPos.x = swapPos - swapStep * rockNum;
         }
     }
 
@@ -73,22 +77,41 @@ public class GameManager : MonoBehaviour
     {
         int best = 0;
         string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
-        
-        // Todo: load data file, and write data
+        path = Path.Combine(path, "save.data");
 
-        if (score > best)
+        if (!File.Exists(path))
         {
-
-            return score.ToString();
+            File.CreateText(path).Dispose();
         }
         else
         {
-            return best.ToString();
+            string raw = File.ReadAllText(path);
+            try
+            {
+                best = System.Convert.ToInt32(raw);
+            }
+            catch (System.FormatException)
+            {
+                best = 0;
+            }
         }
+
+        if (score > best)
+        {
+            // Be the best score, save it!
+            best = score;
+            newRecord.gameObject.SetActive(true);
+            File.WriteAllText(path, score.ToString());
+        }
+        return best.ToString();
     }
 
+
+    // Reload game
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+
 }

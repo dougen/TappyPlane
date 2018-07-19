@@ -51,6 +51,7 @@ public class PlaneController : MonoBehaviour
 
         
         // Game Over
+        // TODO: 播放音效
         if (gm.gameOver)
         {
             anim.enabled = false;

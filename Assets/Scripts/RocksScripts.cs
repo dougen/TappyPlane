@@ -36,6 +36,7 @@ public class RocksScripts : MonoBehaviour
 	}
 	
 	// Update is called once per frame
+	// TODO: 根据分数区间变换贴图
 	void Update () 
 	{
 		if (transform.position.x < endPos.x) 
