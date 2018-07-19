@@ -234,7 +234,7 @@ MonoBehaviour:
   moveSpeed: 150
   startPos: {x: 575, y: 0}
   endPos: {x: -475, y: 0}
-  heightPos: {x: -87, y: 100}
+  heightPos: {x: -88, y: 90}
   rock: {fileID: 4875071675013184}
   rockDown: {fileID: 4598402266656768}
 --- !u!210 &210251812210849144

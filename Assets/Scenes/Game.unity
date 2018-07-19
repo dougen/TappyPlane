@@ -458,7 +458,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 37, y: 137}
+  m_AnchoredPosition: {x: 37, y: 160}
   m_SizeDelta: {x: 400, y: 73}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &572371181
@@ -625,7 +625,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8862746, g: 0.3529412, b: 0.3529412, a: 1}
+  m_Color: {r: 0.4056604, g: 0.36165008, b: 0.36165008, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -670,7 +670,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4749701368357658, guid: 64426014713a6da4b8b2643b3ce0dc72, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 35
+      value: -25
       objectReference: {fileID: 0}
     - target: {fileID: 4749701368357658, guid: 64426014713a6da4b8b2643b3ce0dc72, type: 2}
       propertyPath: m_LocalPosition.z
@@ -825,7 +825,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1011669730}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1860955984}
+        m_MethodName: Restart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1011669730
@@ -935,7 +946,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 076c838a6a4bc8b449e45dc422032d8f, type: 3}
-    m_FontSize: 38
+    m_FontSize: 56
     m_FontStyle: 3
     m_BestFit: 0
     m_MinSize: 2
@@ -6035,7 +6046,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -283.1, y: -168.6}
+  m_AnchoredPosition: {x: -283.1, y: -230}
   m_SizeDelta: {x: 241.1, y: 147.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1565665408
