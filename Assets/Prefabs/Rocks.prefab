@@ -237,6 +237,12 @@ MonoBehaviour:
   heightPos: {x: -80, y: 90}
   rock: {fileID: 4875071675013184}
   rockDown: {fileID: 4598402266656768}
+  rocks:
+  - {fileID: 21300000, guid: 23f932d9bffa34947b4da5714a1dc73b, type: 3}
+  - {fileID: 21300000, guid: db72b2a9d4b03da458c4b78ff0c0989b, type: 3}
+  rocksDown:
+  - {fileID: 21300000, guid: 31f93f891d00cf543b01a484cd66b919, type: 3}
+  - {fileID: 21300000, guid: 7492e6865b87f6d47a7f289a0f0924b9, type: 3}
 --- !u!210 &210251812210849144
 SortingGroup:
   m_ObjectHideFlags: 1

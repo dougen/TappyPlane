@@ -92,6 +92,10 @@ MonoBehaviour:
   startPos: {x: 800, y: -205}
   endPos: {x: -806, y: -205}
   moveSpeed: 150
+  sprites:
+  - {fileID: 21300000, guid: a6c186872db7a094285132f2acddacbb, type: 3}
+  - {fileID: 21300000, guid: 5a11d94308c62c949b57e4a18d1935e4, type: 3}
+  - {fileID: 21300000, guid: c4cb6959136c019418fb45a013f8bb79, type: 3}
 --- !u!212 &212252386721716348
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -29,7 +29,7 @@ public class SwitchMedal : MonoBehaviour
         }
         else if (gm.scores >= gm.levels[2])
         {
-            img.sprite = medals[1];
+            img.sprite = medals[2];
         }
     }
 }
