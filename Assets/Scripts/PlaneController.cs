@@ -11,15 +11,20 @@ public class PlaneController : MonoBehaviour
 
     public Vector2 upSpeed;
 
+    public AudioClip[] audioClips;
+
     // Set start flag false default.
     [HideInInspector]
     public bool gameStarted = false;
+    [HideInInspector]
+    public AudioSource audioSource;
 
     private float radian = 0f;
     private Rigidbody2D rigd2d;
     private Vector2 startPos;
-	private GameManager gm;
+    private GameManager gm;
     private Animator anim;
+
 
     // Use this for initialization
     private void Start()
@@ -30,8 +35,9 @@ public class PlaneController : MonoBehaviour
         rigd2d = GetComponent<Rigidbody2D>();
         rigd2d.gravityScale = 0f;
 
-		gm = FindObjectOfType<GameManager>();
+        gm = FindObjectOfType<GameManager>();
         anim = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -49,11 +55,12 @@ public class PlaneController : MonoBehaviour
             }
         }
 
-        
+
         // Game Over
-        // TODO: 播放音效
         if (gm.gameOver)
         {
+            PlayAudio(0);
+            StartCoroutine(MuteAfterPlayed());
             anim.enabled = false;
         }
     }
@@ -65,6 +72,7 @@ public class PlaneController : MonoBehaviour
             if (!gm.gameOver)
             {
                 rigd2d.velocity = upSpeed;
+                PlayAudio(2);
             }
         }
     }
@@ -78,7 +86,23 @@ public class PlaneController : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D other)
-    {		
-		gm.gameOver = true;
+    {
+        gm.gameOver = true;
+    }
+
+
+    public void PlayAudio(int clipsNum)
+    {
+        if (!audioSource.isPlaying)
+        {
+            audioSource.clip = audioClips[clipsNum];
+            audioSource.Play();
+        }
+    }
+
+    private IEnumerator MuteAfterPlayed()
+    {
+        yield return new WaitForSeconds(audioSource.clip.length);
+        audioSource.mute = true;
     }
 }

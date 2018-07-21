@@ -40,7 +40,6 @@ public class GameManager : MonoBehaviour
     {
         if (pc.gameStarted && !swaped)
         {
-            // TODO: 播放背景音乐
             swaped = true;
             SwapRocks();
             scoresText.gameObject.SetActive(true);

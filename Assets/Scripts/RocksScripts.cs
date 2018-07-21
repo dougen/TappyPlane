@@ -55,6 +55,7 @@ public class RocksScripts : MonoBehaviour
             {
                 gm.scores++;
                 passed = true;
+                plane.GetComponent<PlaneController>().PlayAudio(1);
             }
         }
     }
