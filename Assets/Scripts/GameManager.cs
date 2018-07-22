@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public Text bestScore;
     public Text newRecord;
     public GameObject gameOverPanel;
+    public GameObject tickPanel;
+    public GameObject mainPanel;
 
     public float swapPos;
     public float swapStep;
@@ -22,23 +24,31 @@ public class GameManager : MonoBehaviour
 
     public int[] levels;
 
-    [HideInInspector]
     public bool gameOver = false;
-
+    public bool gameReady = false;
+    public bool gameStarted = false;
     public int scores = 0;
 
     private bool swaped = false;
+    public AudioSource audioSource;
 
     // Use this for initialization
     void Start()
     {
-
+        audioSource = GetComponent<AudioSource>();
+        FindObjectOfType<Singleton>().playeMore = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (pc.gameStarted && !swaped)
+
+        if (gameReady)
+        {
+            audioSource.Pause();
+        }
+
+        if (gameStarted && !swaped)
         {
             swaped = true;
             SwapRocks();
@@ -112,5 +122,10 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-
+    public void ReadyGame()
+    {
+        gameReady = true;
+        mainPanel.SetActive(false);
+        tickPanel.SetActive(true);
+    }
 }

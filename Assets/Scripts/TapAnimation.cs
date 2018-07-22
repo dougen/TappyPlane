@@ -11,14 +11,14 @@ public class TapAnimation : MonoBehaviour
 	private Image image;
 	private int count = 0;
 	private float timeCount = 0f;
-	private PlaneController pc;
+	private GameManager gm;
 
 
 	// Use this for initialization
 	void Start () 
 	{
 		image = GetComponent<Image>();
-		pc = FindObjectOfType<PlaneController>();
+		gm = FindObjectOfType<GameManager>();
 	}
 	
 	// Update is called once per frame
@@ -33,7 +33,7 @@ public class TapAnimation : MonoBehaviour
 			image.sprite = sprites[count % sprites.Length];
 		}
 
-		if (pc.gameStarted) 
+		if (gm.gameStarted) 
 		{
 			transform.parent.gameObject.SetActive(false);
 		}

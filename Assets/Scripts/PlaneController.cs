@@ -15,8 +15,6 @@ public class PlaneController : MonoBehaviour
 
     // Set start flag false default.
     [HideInInspector]
-    public bool gameStarted = false;
-    [HideInInspector]
     public AudioSource audioSource;
 
     private float radian = 0f;
@@ -44,13 +42,13 @@ public class PlaneController : MonoBehaviour
     private void Update()
     {
         // When gameStart is true, recover the gravity.
-        if (!gameStarted)
+        if (!gm.gameStarted)
         {
             IdleMove();
 
-            if (Input.GetMouseButtonDown(0))
+            if (gm.gameReady && Input.GetMouseButtonDown(0))
             {
-                gameStarted = true;
+                gm.gameStarted = true;
                 rigd2d.gravityScale = 100f;
             }
         }
@@ -67,7 +65,7 @@ public class PlaneController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (gameStarted && Input.GetMouseButtonDown(0))
+        if (gm.gameStarted && Input.GetMouseButtonDown(0))
         {
             if (!gm.gameOver)
             {
